@@ -6,6 +6,8 @@ import io.ktor.client.plugins.*
 import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.json.Json
+import ru.rosmolodez.onboarding.api.KnowledgeBaseApi
 import ru.rosmolodez.onboarding.api.config.ServerConfig
 
 class ApiProvider(private val config: ServerConfig) {
@@ -14,7 +16,11 @@ class ApiProvider(private val config: ServerConfig) {
         HttpClient(CIO) {
             install(DefaultRequest)
             install(ContentNegotiation) {
-                json()
+                json(
+                    Json {
+                        ignoreUnknownKeys = true
+                    }
+                )
             }
 
             defaultRequest {
@@ -26,4 +32,6 @@ class ApiProvider(private val config: ServerConfig) {
             }
         }
     }
+
+    val knowledgeBaseApi by lazy { KnowledgeBaseApi(httpClient) }
 }
