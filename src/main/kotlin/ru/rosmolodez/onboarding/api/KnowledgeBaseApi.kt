@@ -11,11 +11,11 @@ class KnowledgeBaseApi(
 ) : IKnowledgeBaseApi {
 
     override suspend fun getCategories(): List<NWCategory> =
-        client.get("categories").body()
+        client.get("category").body()
 
-    override suspend fun getArticles(id: Long): List<NWArticle> =
-        client.get("articles") {
-            url.parameters.append("category", id.toString())
+    override suspend fun getArticles(categoryId: Long): List<NWArticle> =
+        client.get("article/search/") {
+            url.parameters.append("category", categoryId.toString())
         }.body()
 
     override suspend fun getArticle(id: Long): NWArticle =
