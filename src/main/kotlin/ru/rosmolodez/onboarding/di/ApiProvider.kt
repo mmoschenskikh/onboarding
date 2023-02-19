@@ -7,7 +7,10 @@ import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.http.*
 import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
+import ru.rosmolodez.onboarding.api.IKnowledgeBaseApi
+import ru.rosmolodez.onboarding.api.IToolsApi
 import ru.rosmolodez.onboarding.api.KnowledgeBaseApi
+import ru.rosmolodez.onboarding.api.ToolsMockApi
 import ru.rosmolodez.onboarding.api.config.ServerConfig
 
 class ApiProvider(private val config: ServerConfig) {
@@ -33,5 +36,6 @@ class ApiProvider(private val config: ServerConfig) {
         }
     }
 
-    val knowledgeBaseApi by lazy { KnowledgeBaseApi(httpClient) }
+    val knowledgeBaseApi: IKnowledgeBaseApi by lazy { KnowledgeBaseApi(httpClient) }
+    val toolsApi: IToolsApi by lazy { ToolsMockApi }
 }
