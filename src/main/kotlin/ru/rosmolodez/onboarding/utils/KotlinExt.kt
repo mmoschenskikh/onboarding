@@ -1,5 +1,11 @@
 package ru.rosmolodez.onboarding.utils
 
+inline fun <T> tryOrNull(block: () -> T) = try {
+    block()
+} catch (e: Exception) {
+    null
+}
+
 inline fun <P1, P2, R> let(
     p1: P1?,
     p2: P2?,
