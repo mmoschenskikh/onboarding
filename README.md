@@ -48,13 +48,13 @@
 Сначала необходимо собрать .jar-образ:
 
 ```
-docker build -t helper-bot .
+docker build -t rosmolodez-onboarding .
 ```
 
 Затем запустить приложение:
 
 ```
-docker run --env-file env.list helper-bot
+docker run --env-file env.list rosmolodez-onboarding
 ```
 
 ### Запуск без Docker
@@ -68,5 +68,5 @@ docker run --env-file env.list helper-bot
 Затем запустить приложение:
 
 ```
-java -jar ./build/libs/helper-bot-$VERSION.jar
+java -jar ./build/libs/rosmolodez-onboarding-$VERSION.jar
 ```

@@ -5,11 +5,11 @@ RUN gradle fatJar
 
 FROM openjdk:11
 RUN mkdir /app
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/rosmolodez-bot.jar
+COPY --from=build /home/gradle/src/build/libs/*.jar /app/rosmolodez-onboarding.jar
 
 ARG bot_token
 ENV TELEGRAM_BOT_TOKEN=$bot_token
 ARG bot_name
 ENV TELEGRAM_BOT_USERNAME=$bot_name
 
-ENTRYPOINT ["java","-jar","/app/rosmolodez-bot.jar"]
+ENTRYPOINT ["java","-jar","/app/rosmolodez-onboarding.jar"]
